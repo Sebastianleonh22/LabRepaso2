@@ -21,6 +21,7 @@ namespace LabRepaso2
         List<Vehiculo> vehiculos = new List<Vehiculo>();
         List<Cliente> clientes = new List<Cliente>();
         List<Alquiler> alquileres = new List<Alquiler>();
+        List<PrecioAlquiler> precioAlquileres = new List<PrecioAlquiler>();
         
 
 
@@ -70,17 +71,55 @@ namespace LabRepaso2
             reader.Close();
         }
 
+        public void CargarAlquileres()
+        {
+            string fileName = "Alquileres.txt";
+
+            FileStream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+            StreamReader reader = new StreamReader(stream);
+
+
+            while (reader.Peek() > -1)
+            {
+                //leer datos del vehiculo
+                Alquiler alquiler = new Alquiler();
+                alquiler.Nit = reader.ReadLine();
+                alquiler.Placa = reader.ReadLine();
+                alquiler.FechaAlquiler = reader.ReadLine();
+                alquiler.FechaDevolucion = reader.ReadLine();
+                alquiler.KmRecorridos1 = Convert.ToDecimal(reader.ReadLine());
+
+                alquileres.Add(alquiler);
+            }
+            //Cerrar el archivo, esta linea es importante porque sino despues de correr varias veces el programa daría error de que el archivo quedó abierto muchas veces. Entonces es necesario cerrarlo despues de terminar de leerlo.
+            reader.Close();
+        }
 
         public void MostrarTodo()
         {
+            dataGridViewVehiiculos.Refresh();
             dataGridViewVehiiculos.DataSource = null;
             dataGridViewVehiiculos.DataSource = vehiculos;
             dataGridViewVehiiculos.Refresh();
             dataGridViewClientes.DataSource = null;
             dataGridViewClientes.DataSource = clientes;
             dataGridViewClientes.Refresh();
+            dataGridViewAlquileres.DataSource = null;
+            dataGridViewAlquileres.DataSource = alquileres;
+            dataGridViewAlquileres.Refresh();
 
         }
+        public void Mostrarclientes()
+        {
+            
+            dataGridViewPrecioAlquileres.DataSource = null;
+            dataGridViewPrecioAlquileres.DataSource = clientes;
+            dataGridViewPrecioAlquileres.Refresh();
+            
+
+        }
+
+
         private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -90,28 +129,69 @@ namespace LabRepaso2
         {
             CargarVehiculos();
             CargarClientes();
+            CargarAlquileres();
             MostrarTodo();
+            label5.Visible = true;
+            labelVehiculoMasUsado.Visible = true;
         }
 
         private void btnVerAlquiler_Click(object sender, EventArgs e)
         {
+            
+
             foreach (Cliente cliente in clientes)
             {
                 string nit = cliente.Nit;
 
                 foreach (Alquiler alquiler in alquileres)
                 {
-                    if (cliente.Nit == alquiler.Nit)
+                    string placa = alquiler.Placa;
+
+                    foreach(Vehiculo vehiculo in vehiculos)
                     {
-                        Vehiculo vehiculo = new Vehiculo();
+                        if (cliente.Nit == alquiler.Nit && alquiler.Placa == vehiculo.Placa)
+                        {
+                            PrecioAlquiler precioalquiler = new PrecioAlquiler();
 
+                            precioalquiler.Nombre_Cliente = cliente.Nombre;
+                            precioalquiler.Marca = vehiculo.Marca;
+                            precioalquiler.Modelo = vehiculo.Modelo;
+                            precioalquiler.Color = vehiculo.Color;
+                            precioalquiler.Fecha_Devolucion = alquiler.FechaDevolucion;
+                            precioalquiler.Total_a_Pagar = vehiculo.PrecioKm * alquiler.KmRecorridos1;
 
-                        alquiler.Nit = cliente.Nit;
-                        alquiler.KmRecorridos1 = vehiculo.PrecioKm * alquiler.KmRecorridos1;
-                       
+                            precioAlquileres.Add(precioalquiler);
+
+                        }
+
                     }
+                    
                 }
             }
+
+            MostrarPrecioAlquileres();
+
+
+
+        }
+
+        public void MostrarPrecioAlquileres()
+        {
+            dataGridViewPrecioAlquileres.DataSource = null;
+            dataGridViewPrecioAlquileres.DataSource = precioAlquileres;
+            dataGridViewPrecioAlquileres.Refresh();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            IngresarDatosVehiculos ingresarDatosVehiculos = new IngresarDatosVehiculos();
+            ingresarDatosVehiculos.Show();
+            this.Hide();
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

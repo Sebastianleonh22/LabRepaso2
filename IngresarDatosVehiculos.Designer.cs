@@ -30,14 +30,17 @@ namespace LabRepaso2
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxPlaca = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBoxMarca = new System.Windows.Forms.TextBox();
+            this.textBoxModelo = new System.Windows.Forms.TextBox();
+            this.textBoxColor = new System.Windows.Forms.TextBox();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBoxPrecioKm = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -50,12 +53,12 @@ namespace LabRepaso2
             this.label1.TabIndex = 0;
             this.label1.Text = "Ingrese los datos de el vehiculo";
             // 
-            // textBox1
+            // textBoxPlaca
             // 
-            this.textBox1.Location = new System.Drawing.Point(239, 70);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(148, 20);
-            this.textBox1.TabIndex = 1;
+            this.textBoxPlaca.Location = new System.Drawing.Point(239, 70);
+            this.textBoxPlaca.Name = "textBoxPlaca";
+            this.textBoxPlaca.Size = new System.Drawing.Size(148, 20);
+            this.textBoxPlaca.TabIndex = 1;
             // 
             // label2
             // 
@@ -97,43 +100,74 @@ namespace LabRepaso2
             this.label5.TabIndex = 5;
             this.label5.Text = "Color";
             // 
-            // textBox2
+            // textBoxMarca
             // 
-            this.textBox2.Location = new System.Drawing.Point(239, 109);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(148, 20);
-            this.textBox2.TabIndex = 6;
+            this.textBoxMarca.Location = new System.Drawing.Point(239, 109);
+            this.textBoxMarca.Name = "textBoxMarca";
+            this.textBoxMarca.Size = new System.Drawing.Size(148, 20);
+            this.textBoxMarca.TabIndex = 6;
             // 
-            // textBox3
+            // textBoxModelo
             // 
-            this.textBox3.Location = new System.Drawing.Point(239, 154);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(148, 20);
-            this.textBox3.TabIndex = 7;
+            this.textBoxModelo.Location = new System.Drawing.Point(239, 154);
+            this.textBoxModelo.Name = "textBoxModelo";
+            this.textBoxModelo.Size = new System.Drawing.Size(148, 20);
+            this.textBoxModelo.TabIndex = 7;
             // 
-            // textBox4
+            // textBoxColor
             // 
-            this.textBox4.Location = new System.Drawing.Point(239, 199);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(148, 20);
-            this.textBox4.TabIndex = 8;
+            this.textBoxColor.Location = new System.Drawing.Point(239, 199);
+            this.textBoxColor.Name = "textBoxColor";
+            this.textBoxColor.Size = new System.Drawing.Size(148, 20);
+            this.textBoxColor.TabIndex = 8;
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Location = new System.Drawing.Point(455, 305);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(75, 23);
+            this.btnAgregar.TabIndex = 9;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(145, 243);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(80, 20);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Precio Km";
+            // 
+            // textBoxPrecioKm
+            // 
+            this.textBoxPrecioKm.Location = new System.Drawing.Point(239, 243);
+            this.textBoxPrecioKm.Name = "textBoxPrecioKm";
+            this.textBoxPrecioKm.Size = new System.Drawing.Size(148, 20);
+            this.textBoxPrecioKm.TabIndex = 11;
             // 
             // IngresarDatosVehiculos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(542, 282);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.ClientSize = new System.Drawing.Size(542, 340);
+            this.Controls.Add(this.textBoxPrecioKm);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.btnAgregar);
+            this.Controls.Add(this.textBoxColor);
+            this.Controls.Add(this.textBoxModelo);
+            this.Controls.Add(this.textBoxMarca);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxPlaca);
             this.Controls.Add(this.label1);
             this.Name = "IngresarDatosVehiculos";
             this.Text = "IngresarDatosVehiculos";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.IngresarDatosVehiculos_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -142,13 +176,16 @@ namespace LabRepaso2
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxPlaca;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBoxMarca;
+        private System.Windows.Forms.TextBox textBoxModelo;
+        private System.Windows.Forms.TextBox textBoxColor;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBoxPrecioKm;
     }
 }
