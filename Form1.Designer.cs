@@ -42,6 +42,8 @@ namespace LabRepaso2
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.labelVehiculoMasUsado = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVehiiculos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPrecioAlquileres)).BeginInit();
@@ -67,7 +69,7 @@ namespace LabRepaso2
             // dataGridViewPrecioAlquileres
             // 
             this.dataGridViewPrecioAlquileres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewPrecioAlquileres.Location = new System.Drawing.Point(12, 401);
+            this.dataGridViewPrecioAlquileres.Location = new System.Drawing.Point(12, 475);
             this.dataGridViewPrecioAlquileres.Name = "dataGridViewPrecioAlquileres";
             this.dataGridViewPrecioAlquileres.Size = new System.Drawing.Size(664, 78);
             this.dataGridViewPrecioAlquileres.TabIndex = 2;
@@ -103,7 +105,7 @@ namespace LabRepaso2
             // 
             // btnVerAlquiler
             // 
-            this.btnVerAlquiler.Location = new System.Drawing.Point(557, 485);
+            this.btnVerAlquiler.Location = new System.Drawing.Point(557, 559);
             this.btnVerAlquiler.Name = "btnVerAlquiler";
             this.btnVerAlquiler.Size = new System.Drawing.Size(119, 23);
             this.btnVerAlquiler.TabIndex = 6;
@@ -141,7 +143,7 @@ namespace LabRepaso2
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(36, 385);
+            this.label4.Location = new System.Drawing.Point(36, 459);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(106, 13);
             this.label4.TabIndex = 10;
@@ -150,28 +152,50 @@ namespace LabRepaso2
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(156, 385);
+            this.label5.Location = new System.Drawing.Point(352, 459);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(120, 13);
+            this.label5.Size = new System.Drawing.Size(143, 13);
             this.label5.TabIndex = 11;
-            this.label5.Text = "Vehiculo mas recorrido :";
+            this.label5.Text = "Total Vehiculo mas usado: Q";
             this.label5.Visible = false;
             // 
             // labelVehiculoMasUsado
             // 
             this.labelVehiculoMasUsado.AutoSize = true;
-            this.labelVehiculoMasUsado.Location = new System.Drawing.Point(285, 385);
+            this.labelVehiculoMasUsado.Location = new System.Drawing.Point(492, 459);
             this.labelVehiculoMasUsado.Name = "labelVehiculoMasUsado";
             this.labelVehiculoMasUsado.Size = new System.Drawing.Size(35, 13);
             this.labelVehiculoMasUsado.TabIndex = 12;
             this.labelVehiculoMasUsado.Text = "label6";
             this.labelVehiculoMasUsado.Visible = false;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(629, 459);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "label6";
+            this.label6.Visible = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(554, 459);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(79, 13);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Km Recorridos:";
+            this.label7.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(693, 518);
+            this.ClientSize = new System.Drawing.Size(693, 594);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.labelVehiculoMasUsado);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -212,6 +236,8 @@ namespace LabRepaso2
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label labelVehiculoMasUsado;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }
 

@@ -41,7 +41,7 @@ namespace LabRepaso2
                 vehiculo.Marca = reader.ReadLine();
                 vehiculo.Modelo = reader.ReadLine();
                 vehiculo.Color = reader.ReadLine();
-                vehiculo.PrecioKm = Convert.ToInt32(reader.ReadLine());
+                vehiculo.PrecioKm = Convert.ToDecimal(reader.ReadLine());
 
                 vehiculos.Add(vehiculo);
             }
@@ -127,18 +127,20 @@ namespace LabRepaso2
 
         private void btnMostrar_Click(object sender, EventArgs e)
         {
+            alquileres.Clear();
+            vehiculos.Clear();
+            clientes.Clear();
             CargarVehiculos();
             CargarClientes();
             CargarAlquileres();
             MostrarTodo();
-            label5.Visible = true;
-            labelVehiculoMasUsado.Visible = true;
+            
         }
 
         private void btnVerAlquiler_Click(object sender, EventArgs e)
         {
-            
 
+            precioAlquileres.Clear();
             foreach (Cliente cliente in clientes)
             {
                 string nit = cliente.Nit;
@@ -170,8 +172,25 @@ namespace LabRepaso2
             }
 
             MostrarPrecioAlquileres();
+            label5.Visible = true;
+            labelVehiculoMasUsado.Visible = true;
+            label6.Visible = true;
+            label7.Visible = true;
+
+        }
+
+        public void VehiculoMasUsado()
+        {
 
 
+            decimal mayor = precioAlquileres.Max(p => p.Total_a_Pagar);
+
+            Alquiler Mayor = alquileres.OrderByDescending(p => p.KmRecorridos1).First();
+
+
+
+            labelVehiculoMasUsado.Text = mayor.ToString();
+            label6.Text = Mayor.KmRecorridos1.ToString();
 
         }
 
@@ -180,6 +199,7 @@ namespace LabRepaso2
             dataGridViewPrecioAlquileres.DataSource = null;
             dataGridViewPrecioAlquileres.DataSource = precioAlquileres;
             dataGridViewPrecioAlquileres.Refresh();
+            VehiculoMasUsado();
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -32,34 +32,48 @@ namespace LabRepaso2
                 return; // Detiene la ejecución del método si algún campo está vacío
             }
 
+            
+            Vehiculo vehiculo1 = vehiculos.Find(c => c.Placa == textBoxPlaca.Text);
+            if(vehiculo1 == null)
+            {
+                Vehiculo vehiculo = new Vehiculo();
+                vehiculo.Placa = textBoxPlaca.Text;
+                vehiculo.Marca = textBoxMarca.Text;
+                vehiculo.Modelo = textBoxModelo.Text;
+                vehiculo.Color = textBoxColor.Text;
+                vehiculo.PrecioKm = Convert.ToInt32(textBoxPrecioKm.Text);
+
+                vehiculos.Add(vehiculo);
+
+                using (FileStream stream = new FileStream("Vehiculos.txt", FileMode.Append, FileAccess.Write))
+                {
+                    using (StreamWriter writer = new StreamWriter(stream))
+                    {
+                        for (int i = 0; i < vehiculos.Count; i++)
+                        {
+                            writer.WriteLine(vehiculos[i].Placa);
+                            writer.WriteLine(vehiculos[i].Marca);
+                            writer.WriteLine(vehiculos[i].Modelo);
+                            writer.WriteLine(vehiculos[i].Color);
+                            writer.WriteLine(vehiculos[i].PrecioKm);
+                        }
+                    }
+                }
+
+                MessageBox.Show("Guardado");
+            }
+            else
+            {
+                MessageBox.Show("ya wxiste esta placa");
+            }
+            
+
+
+
             form1.Show();
             this.Hide();
 
-            Vehiculo vehiculo = new Vehiculo();
-            vehiculo.Placa = textBoxPlaca.Text;
-            vehiculo.Marca = textBoxMarca.Text;
-            vehiculo.Modelo = textBoxModelo.Text;
-            vehiculo.Color = textBoxColor.Text;
-            vehiculo.PrecioKm = Convert.ToInt32(textBoxPrecioKm.Text);
-
-            vehiculos.Add(vehiculo);
-
-            using (FileStream stream = new FileStream("Vehiculos.txt", FileMode.Append, FileAccess.Write))
-            {
-                using (StreamWriter writer = new StreamWriter(stream))
-                {
-                    for (int i = 0; i < vehiculos.Count; i++)
-                    {
-                        writer.WriteLine(vehiculos[i].Placa);
-                        writer.WriteLine(vehiculos[i].Marca);
-                        writer.WriteLine(vehiculos[i].Modelo);
-                        writer.WriteLine(vehiculos[i].Color);
-                        writer.WriteLine(vehiculos[i].PrecioKm);
-                    }
-                }
-            }
-
-            MessageBox.Show("Guardado");
+            
         }
 
 
